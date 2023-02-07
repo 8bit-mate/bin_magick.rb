@@ -82,6 +82,14 @@ module BinMagickMethods
   end
 
   #
+  # Bang version of Magick::Image#extent.
+  #
+  def extent!(width, height, x = 0, y = 0)
+    extended_img = extent(width, height, x, y)
+    __setobj__(extended_img)
+  end
+
+  #
   # Scale imgage to fit into size limits.
   #
   # @return [Magick::Image]
@@ -92,7 +100,7 @@ module BinMagickMethods
   end
 
   #
-  #  Bang version of fit_to_size.
+  # Bang version of fit_to_size.
   #
   def fit_to_size!(max_width, max_height)
     resize_to_fit!(max_width, max_height) if oversize?(max_width, max_height)

@@ -10,6 +10,5 @@ require "rmagick"
 # Provides custom instance methods for Magick::Image to process binary images.
 #
 class BinMagick < SimpleDelegator
-  include BinMagickVersion
   include BinMagickMethods
 end

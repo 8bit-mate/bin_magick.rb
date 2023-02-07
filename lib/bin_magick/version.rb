@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-module BinMagickVersion
+require "delegate"
+
+class BinMagick < SimpleDelegator
   VERSION = "0.1.0"
 end
