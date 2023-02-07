@@ -48,7 +48,7 @@ You can also run `bin/console` for an interactive prompt that will allow you to 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/8bit-mate/bin_magick.
+Bug reports and pull requests are welcome on GitHub at https://github.com/8bit-mate/bin_magick.rb.
 
 ## License
 
