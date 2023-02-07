@@ -62,16 +62,8 @@ module BinMagickMethods
   # Bang version of crop_whitespace.
   #
   def crop_whitespace!
-    raise("Can't crop whitespace: image is blank") unless black_px?
-
-    bb = bounding_box
-
-    crop!(
-      bb.x,
-      bb.y,
-      bb.width,
-      bb.height
-    )
+    cropped_img = crop_whitespace
+    __setobj__(cropped_img)
   end
 
   #
