@@ -135,9 +135,8 @@ module BinMagickMethods
   #
   # Bang version of to_binary.
   #
-  def to_binary!(threshold_map: "o2x2", n_gray_colors: 50)
-    grayscale_img = quantize(n_gray_colors, Magick::GRAYColorspace, false)
-    bin_img = grayscale_img.ordered_dither(threshold_map)
+  def to_binary!(...)
+    bin_img = to_binary(...)
     __setobj__(bin_img)
   end
 end

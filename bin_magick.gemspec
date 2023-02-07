@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = "A tiny gem to process binary images (using RMagick)."
   spec.homepage      = "https://github.com/8bit-mate/bin_magick.rb"
   spec.license       = "MIT"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 3.0.0")
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org/"
 
