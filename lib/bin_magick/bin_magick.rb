@@ -8,23 +8,6 @@ require "rmagick"
 #
 module BinMagickMethods
   #
-  # Convert binary image to a hash of binary values.
-  #
-  # @return [Hash{ Array<Integer, Integer> => Integer }]
-  #   [x, y] => color (1 for black / 0 for white)
-  #
-  def to_bin_hash
-    bin_img_hash = {}
-
-    each_pixel do |pixel, x, y|
-      bin_clr = pixel.to_color == "black" ? 1 : 0
-      bin_img_hash[[x, y]] = bin_clr
-    end
-
-    bin_img_hash
-  end
-
-  #
   # Check if image has at least one black pixel.
   #
   # @return [Boolean]
@@ -99,6 +82,15 @@ module BinMagickMethods
   end
 
   #
+  # Return image height.
+  #
+  # @return [Integer]
+  #
+  def height
+    rows
+  end
+
+  #
   # Check if image is larger than provided height OR width.
   #
   # @return [Boolean]
@@ -130,5 +122,31 @@ module BinMagickMethods
   def to_binary!(...)
     bin_img = to_binary(...)
     __setobj__(bin_img)
+  end
+
+  #
+  # Convert binary image to a hash of binary values.
+  #
+  # @return [Hash{ Array<Integer, Integer> => Integer }]
+  #   [x, y] => color (1 for black / 0 for white)
+  #
+  def to_bin_hash
+    bin_img_hash = {}
+
+    each_pixel do |pixel, x, y|
+      bin_clr = pixel.to_color == "black" ? 1 : 0
+      bin_img_hash[[x, y]] = bin_clr
+    end
+
+    bin_img_hash
+  end
+
+  #
+  # Return image width.
+  #
+  # @retur [Integer]
+  #
+  def width
+    columns
   end
 end
