@@ -57,7 +57,15 @@ module BinMagickMethods
   end
 
   #
-  # Bang version of Magick::Image#extent.
+  # Extends image to new size.
+  #
+  def extent(width, height, x = 0, y = 0)
+    new_img = super(width, height, x, y)
+    BinMagick.new(new_img)
+  end
+
+  #
+  # Bang version of extent.
   #
   def extent!(width, height, x = 0, y = 0)
     extended_img = extent(width, height, x, y)
