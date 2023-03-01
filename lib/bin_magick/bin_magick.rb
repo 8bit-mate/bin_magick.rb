@@ -152,7 +152,7 @@ module BinMagickMethods
   #
   # Return image width.
   #
-  # @retur [Integer]
+  # @return [Integer]
   #
   def width
     columns
