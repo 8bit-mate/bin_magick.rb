@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require "delegate"
 require "rmagick"
+
+require_relative "bin_magick_error"
 
 #
 # Custom instance methods for Magick::Image to process binary images.
@@ -20,16 +21,15 @@ module BinMagickMethods
   end
 
   #
-  # Crop whitespace around the image.
-  #
-  # @raise [RuntimeError]
-  #   Raises if the image is blank, so cropping whitespace is impossible.
+  # Crop whitespace border around the image. If image is blank: return original image. 
   #
   # @return [Magick::Image]
   #   Cropped image.
   #
   def crop_whitespace
-    raise("Can't crop whitespace: image is blank") unless black_px?
+    original_image = __getobj__
+
+    return original_image unless black_px?
 
     bb = bounding_box
 
@@ -156,5 +156,23 @@ module BinMagickMethods
   #
   def width
     columns
+  end
+
+  private
+
+  #
+  # Raise an exception.
+  #
+  # @param [Object] exception
+  #   Exception type.
+  #
+  # @option [String] message
+  #   Error message.
+  #
+  def _raise(exception, message = "")
+    # RMAgick has a method Image#raise (see https://rmagick.github.io/image3.html#raise), so to raise an exception
+    # it's required to change the delegate object to the expection we're goint to raise.
+    e = __setobj__(exception.new)
+    raise e, message
   end
 end
